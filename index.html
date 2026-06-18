@@ -11375,10 +11375,18 @@
             <div class="tag tag1 tag-science"></div>
             <div class="tag tag2 tag-space"></div>
             <div class="number">#P68</div>
-            
-            <div class="promo-icon project-icon"></div>
+            <div class="points points-big">1</div>
+            <div class="corporate-icon project-icon"></div>
             <div class="content">
-              <div class="description">(Action: Discard any number of cards from your hand to gain 2 M€ for each discarded card.)</div>
+              <div class="resource money">2</div>
+              <div class="slash">/</div>
+              <div class="tile colony"></div>
+              <br/>
+              -X<div class="resource card"></div>
+              <div class="red-arrow"></div>
+              2X<div class="resource money">1</div>
+              <br/>
+              <div class="description">(Gain 2 M€ per colony. Action: Discard X cards to gain 2X M€.)</div>
             </div>
           </li>
 
@@ -11394,9 +11402,16 @@
             <div class="tag tag3 tag-earth"></div>
             <div class="number">#P69</div>
             
-            <div class="promo-icon project-icon"></div>
+            <div class="corporate-icon project-icon"></div>
             <div class="content">
-              <div class="description">(Effect: Increase your MC production 1 step for each pair of Earth and Venus tags you have. Requires 3 Venus tags.)</div>
+              <div class="resource floater"></div>
+              <br/>
+              <div class="production-box production-box-size1a">
+                <div class="production money">1</div>
+              </div>/<div class="resource-tag tag-earth"></div><div class="resource-tag tag-venus"></div>
+              <br/>
+              <div class="points">1/3<div class="resource floater"></div></div>
+              <div class="description">(Action: Add 1 floater here. +1 MC prod per pair of Earth+Venus tags. 1 VP per 3 floaters.)</div>
             </div>
           </li>
 
@@ -11411,7 +11426,9 @@
             <div class="requirements">Unity or 2 delegates</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="tile colony"></div><br/><div class="description">(Requires Unity ruling or 2 delegates there. Place a colony.)</div>
+              <div class="resource delegate"></div>*/<div class="tile colony"></div>
+              <br/>
+              <div class="description">(Requires Unity ruling or 2 delegates there. Place 1 delegate per colony you have in separate parties.)</div>
             </div>
           </li>
 
@@ -11424,8 +11441,11 @@
             <div class="price">10</div>
             <div class="number">#P71</div>
             
-            <div class="promo-icon project-icon"></div>
+            <div class="corporate-icon project-icon"></div>
             <div class="content">
+              <div class="description" style="font-size:9px">Effect: +1 INFLUENCE.</div>
+              <div class="resource money">3</div>/<div class="tile colony"></div>
+              <br/>
               <div class="description">(Effect: +1 influence. Action: Gain 3 M€ per colony you have.)</div>
             </div>
           </li>
@@ -11442,7 +11462,9 @@
             <div class="requirements">3 Venus tags</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="resource delegate"></div><div class="resource delegate"></div><br/><div class="description">(Requires 3 Venus tags. Place 2 delegates in 1 party.)</div>
+              <div class="resource delegate"></div><div class="resource delegate"></div>
+              <br/>
+              <div class="description">(Req: 3 Venus tags. Place 2 delegates in 1 party.)</div>
             </div>
           </li>
 
@@ -11456,9 +11478,15 @@
             <div class="tag tag1 tag-venus"></div>
             <div class="number">#P73</div>
             
-            <div class="promo-icon project-icon"></div>
+            <div class="corporate-icon project-icon"></div>
             <div class="content">
-              <div class="description">(Add 1 floater here for each Venus tag you have. Action: Remove 2 floaters to raise Venus 1 step. 1VP per 3 floaters.)</div>
+              <div class="resource floater"></div>
+              <br/>
+              <div class="resource floater"></div><div class="resource floater"></div>*:
+              <div class="tile venus-tile"></div>
+              <br/>
+              <div class="points">1/3<div class="resource floater"></div></div>
+              <div class="description">(Add 1 floater per Venus tag you have. Action: Remove 2 floaters to raise Venus 1 step. 1 VP per 3 floaters.)</div>
             </div>
           </li>
 
@@ -11475,7 +11503,14 @@
             <div class="requirements">Mars First or 2 delegates</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="tile city-tile"></div>&nbsp;<div class="production-box"><div class="production money">2</div></div><br/><div class="description">(Requires Mars First ruling or 2 delegates there. Place a city tile. Increase your MC production 2 steps.)</div>
+              <div class="production-box production-box-size1a">
+                <div class="production-prefix"><div class="minus"></div></div>
+                <div class="production energy"></div>
+              </div>
+              &nbsp;
+              <div class="tile city-tile"></div>*
+              <br/>
+              <div class="description">(Req: Mars First ruling or 2 delegates. -1 energy prod. Place a city tile.)</div>
             </div>
           </li>
 
@@ -11491,7 +11526,13 @@
             <div class="requirements">Kelvinists or 2 delegates</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="tile temperature-tile"></div>&nbsp;<div class="tile temperature-tile"></div><br/><div class="description">(Requires Kelvinists in power or 2 delegates there. Raise temperature 2 steps.)</div>
+              <div class="production-box">
+                <div class="production heat"></div>
+              </div>
+              <br/>
+              <div class="resource heat"></div>/<div class="resource floater"></div>
+              <br/>
+              <div class="description">(Req: Kelvinists ruling or 2 delegates. +1 heat prod. Gain 1 heat per floater you have.)</div>
             </div>
           </li>
 
@@ -11504,10 +11545,14 @@
             <div class="price">6</div>
             <div class="tag tag1 tag-venus"></div>
             <div class="number">#P76</div>
-            <div class="requirements">10% Venus</div>
+            <div class="requirements">Venus 10%</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="resource titanium"></div><div class="resource titanium"></div><div class="resource titanium"></div>&nbsp;<div class="resource card"></div><div class="resource card"></div><br/><div class="description">(Requires Venus 10%. Gain 3 titanium and draw 2 Venus cards.)</div>
+              <div class="resource titanium"></div><div class="resource titanium"></div><div class="resource titanium"></div>
+              &nbsp;
+              <div class="resource card"></div><div class="resource card"></div>*
+              <br/>
+              <div class="description">(Req: Venus 10%. Gain 3 titanium. Draw 2 Venus cards.)</div>
             </div>
           </li>
 
@@ -11523,7 +11568,9 @@
             <div class="requirements">2 Jovian tags</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="resource delegate"></div><div class="resource delegate"></div><br/><div class="description">(Requires 2 Jovian tags. Place 2 delegates in 1 party.)</div>
+              <div class="resource delegate"></div><div class="resource delegate"></div>
+              <br/>
+              <div class="description">(Req: 2 Jovian tags. Place 2 delegates in 1 party.)</div>
             </div>
           </li>
 
@@ -11536,10 +11583,14 @@
             <div class="price">25</div>
             <div class="tag tag1 tag-space"></div>
             <div class="number">#P78</div>
-            
-            <div class="promo-icon project-icon"></div>
+            <div class="points points-big">2</div>
+            <div class="corporate-icon project-icon"></div>
             <div class="content">
-              <div class="description">(Effect: When you trade, you may first increase that colony tile track 2 steps. Diverse tags: 1 VP per 3 diverse tags you have.)</div>
+              <div class="tile colony"></div>:+2
+              <br/>
+              3 diverse tags*: add 1 resource to 3 different cards with resources.
+              <br/>
+              <div class="description">(Effect: When you trade, increase colony track 2 steps first. Add resources to 3 different cards.)</div>
             </div>
           </li>
 
@@ -11553,10 +11604,14 @@
             <div class="tag tag1 tag-microbe"></div>
             <div class="tag tag2 tag-plant"></div>
             <div class="number">#P79</div>
-            
+            <div class="points points-big">1</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="production-box"><div class="production money">1</div></div>&nbsp;/&nbsp;<div class="resource-tag tag-building"></div><br/><div class="description">(Increase your MC production 1 step for each colony you have.)</div>
+              <div class="production-box production-box-size1a">
+                <div class="production money">1</div>
+              </div>/<div class="tile colony"></div>
+              <br/>
+              <div class="description">(+1 MC prod per colony you have. 1 VP.)</div>
             </div>
           </li>
 
@@ -11566,12 +11621,17 @@
             class="filterDiv events noneTag prelude2"
           >
             <div class="title background-color-events">Red Appeasement</div>
-            <div class="price">0</div>
+            
             <div class="number">#P80</div>
-            <div class="requirements">Reds ruling + no opponent passed</div>
+            <div class="requirements">Reds or 2 delegates + no opponent passed</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="production-box"><div class="production money">2</div></div>&nbsp;PASS<br/><div class="description">(Requires Reds ruling or 2 delegates there, and no other player has passed. Increase MC production 2 steps. Pass.)</div>
+              <div class="production-box">
+                <div class="production money">2</div>
+              </div>
+              &nbsp;PASS*
+              <br/>
+              <div class="description">(Req: Reds ruling or 2 delegates AND no other player has passed. +2 MC prod. This counts as passing.)</div>
             </div>
           </li>
 
@@ -11586,10 +11646,13 @@
             <div class="tag tag2 tag-plant"></div>
             <div class="tag tag3 tag-venus"></div>
             <div class="number">#P81</div>
-            <div class="requirements">-4 C or lower</div>
+            <div class="requirements">-4°C or lower</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="description">(Requires temperature -4 C or lower. Gain 1 plant per microbe tag you have.)</div>
+              <div class="resource plant"></div>/<div class="resource-tag tag-venus"></div>
+              <div class="resource-tag tag-plant"></div><div class="tile colony"></div>
+              <br/>
+              <div class="description">(Req: -4°C or lower. Gain 1 plant per Venus tag, plant tag, and colony you have.)</div>
             </div>
           </li>
 
@@ -11605,7 +11668,9 @@
             <div class="requirements">Greens or 2 delegates</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="tile greenery-tile"></div><br/><div class="description">(Requires Greens ruling or 2 delegates there. Place a greenery tile and raise oxygen 1 step.)</div>
+              steal 4<div class="resource plant red-outline"></div>
+              <br/>
+              <div class="description">(Req: Greens ruling or 2 delegates. Steal 4 plants from any player.)</div>
             </div>
           </li>
 
@@ -11621,7 +11686,11 @@
             <div class="requirements">4 Earth tags</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="tile rating"></div><div class="tile rating"></div><div class="tile rating"></div>&nbsp;<div class="resource delegate"></div><div class="resource delegate"></div><br/><div class="description">(Requires 4 Earth tags. Gain 3 TR. Place 2 delegates.)</div>
+              <div class="tile rating"></div><div class="tile rating"></div><div class="tile rating"></div>
+              <br/>
+              <div class="resource delegate"></div><div class="resource delegate"></div>
+              <br/>
+              <div class="description">(Req: 4 Earth tags. Gain 3 TR. Place 2 delegates.)</div>
             </div>
           </li>
 
@@ -11635,10 +11704,14 @@
             <div class="tag tag1 tag-venus"></div>
             <div class="tag tag2 tag-space"></div>
             <div class="number">#P84</div>
-            
+            <div class="points points-big">1</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="resource floater"></div><div class="resource floater"></div>*&nbsp;<div class="resource card"></div><div class="resource card"></div><br/><div class="description">(Add 2 floaters to ANY CARD. Draw 2 Venus cards.)</div>
+              <div class="resource floater"></div><div class="resource floater"></div>*
+              &nbsp;
+              <div class="resource card"></div><div class="resource card"></div>*
+              <br/>
+              <div class="description">(Add 2 floaters to ANY card. Draw 2 Venus cards. 1 VP.)</div>
             </div>
           </li>
 
@@ -11656,7 +11729,13 @@
             <div class="requirements">Scientists or 2 delegates</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="resource money">1</div>/&nbsp;<div class="resource-tag tag-jovian"></div><div class="resource-tag tag-earth"></div><div class="resource-tag tag-venus"></div>&nbsp;<div class="resource card"></div><div class="resource card"></div><br/><div class="description">(Requires Scientists ruling or 2 delegates there. Gain 1 MC per Jovian/Earth/Venus tag you have. Draw 2 cards.)</div>
+              <div class="resource money">1</div>/
+              <div class="resource-tag tag-jovian"></div><div class="resource-tag tag-earth"></div>
+              <div class="resource-tag tag-venus"></div><div class="tile colony"></div>
+              <br/>
+              <div class="resource card"></div><div class="resource card"></div>
+              <br/>
+              <div class="description">(Req: Scientists ruling or 2 delegates. Gain 1 M€ per Jovian/Earth/Venus tag and colony. Draw 2 cards.)</div>
             </div>
           </li>
 
@@ -11672,7 +11751,11 @@
             
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="tile venus-tile"></div><br/><div class="description">(Discard 1 card to raise Venus 1 step.)</div>
+              <div class="minus"></div><div class="resource card"></div>
+              &nbsp;
+              <div class="tile venus-tile"></div>
+              <br/>
+              <div class="description">(Discard 1 card to raise Venus 1 step.)</div>
             </div>
           </li>
 
@@ -11686,10 +11769,14 @@
             <div class="tag tag1 tag-venus"></div>
             <div class="tag tag2 tag-space"></div>
             <div class="number">#P87</div>
-            
+            <div class="points points-big">2</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="tile venus-tile"></div><div class="tile venus-tile"></div>&nbsp;<div class="resource money">4</div>/colony<br/><div class="description">(Raise Venus 2 steps. Gain 4 M€ per colony you have.)</div>
+              <div class="tile venus-tile"></div><div class="tile venus-tile"></div>
+              &nbsp;
+              <div class="resource money">4</div>/<div class="tile colony"></div>
+              <br/>
+              <div class="description">(Raise Venus 2 steps. Gain 4 M€ per colony. 2 VP.)</div>
             </div>
           </li>
 
@@ -11704,9 +11791,10 @@
             <div class="tag tag2 tag-space"></div>
             <div class="number">#P88</div>
             
-            <div class="promo-icon project-icon"></div>
+            <div class="corporate-icon project-icon"></div>
             <div class="content">
-              <div class="description">(Action: Reveal the top 2 cards; take any Venus cards to hand for free, buy or discard the rest.)</div>
+              <div class="description" style="font-size:9px">ACTION: Reveal top 2 cards. Take any Venus cards free. Buy or discard the rest.</div>
+              <div class="description">(Reveal top 2 cards — Venus cards go to hand for free, others you buy or discard.)</div>
             </div>
           </li>
 
@@ -11720,9 +11808,14 @@
             <div class="tag tag1 tag-venus"></div>
             <div class="number">#P89</div>
             
-            <div class="promo-icon project-icon"></div>
+            <div class="corporate-icon project-icon"></div>
             <div class="content">
-              <div class="resource floater"></div><div class="resource floater"></div>*<br/><div class="description">(Add 2 floaters to ANY VENUS CARD. Action: Spend floaters here as 3 MC each when playing a Venus card.)</div>
+              <div class="resource money">12</div>(<div class="minus"></div><div class="resource money">1</div>/<div class="resource-tag tag-venus"></div>):
+              <div class="tile venus-tile"></div>
+              <br/>
+              <div class="resource floater"></div><div class="resource floater"></div>*
+              <br/>
+              <div class="description">(Add 2 floaters to ANY Venus card. Action: Pay 12 M€ (reduced by 1 per Venus tag) to raise Venus 1 step.)</div>
             </div>
           </li>
 
@@ -11736,10 +11829,13 @@
             <div class="tag tag1 tag-venus"></div>
             <div class="tag tag2 tag-space"></div>
             <div class="number">#P90</div>
-            <div class="requirements">2 Venus tags</div>
-            <div class="promo-icon project-icon"></div>
+            <div class="points points-big">1</div><div class="requirements">2 Venus tags</div>
+            <div class="corporate-icon project-icon"></div>
             <div class="content">
-              <div class="description">(Requires 2 Venus tags. Action: Add 1 floater to ANY VENUS CARD, or spend 1 floater here to trade for free.)</div>
+              <div class="tile colony"></div>:
+              <div class="resource money">3</div>
+              <br/>
+              <div class="description">(Req: 2 Venus tags. Effect: When you trade, gain 3 M€. 1 VP.)</div>
             </div>
           </li>
 
@@ -11755,7 +11851,8 @@
             <div class="requirements">Chairman</div>
             <div class="promo-icon project-icon"></div>
             <div class="content">
-              <div class="description">(Requires that you are Chairman. Draw 3 prelude cards and play 1 of them, discard the other 2.)</div>
+              <div class="description" style="font-size:9px">DRAW 3 PRELUDE CARDS AND PLAY 1 OF THEM. DISCARD THE OTHER 2.</div>
+              <div class="description">(Req: You are Chairman.)</div>
             </div>
           </li>
 
@@ -15847,7 +15944,7 @@
           <!--P43-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-science tag-wild prelude2"
+            class="filterDiv prelude prelude-card tag-science tag-wild prelude2 "
           >
             <div class="title background-color-prelude">Applied Science</div>
             <div class="tag tag1 tag-science"></div>
@@ -15856,23 +15953,24 @@
             <div class="number" style="margin-left: 99px">#P43</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="resource science"></div>
-              <div class="resource science"></div>
-              <div class="resource science"></div>
-              <div class="resource science"></div>
-              <div class="resource science"></div>
-              <div class="resource science"></div>
+              <div class="resource science"></div>*
+              <div class="red-arrow"></div>
+              <div class="resource wild"></div>*
               <br/>
-              <div class="description">(Add 6 science resources to this card. 1 VP per 2 science resources here.)</div>
+              <div class="resource science"></div><div class="resource science"></div><div class="resource science"></div>
+              <div class="resource science"></div><div class="resource science"></div><div class="resource science"></div>
+              <br/>
+              <div class="description">(Add 6 science resources here. Action: Remove 1 to add 1 resource to any card with a resource OR gain 1 standard resource.)</div>
             </div>
           </li>
           <!--P44-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-venus tag-floater prelude2"
+            class="filterDiv prelude prelude-card tag-venus tag-floater prelude2 "
           >
             <div class="title background-color-prelude">Atmospheric Enhancers</div>
             <div class="tag tag1 tag-venus"></div>
+            <div class="tag tag2 tag-floater"></div>
             <div class="prelude-label">PRELUDE</div>
             <div class="number" style="margin-left: 99px">#P44</div>
             <div class="prelude-icon preludeCard-icon"></div>
@@ -15882,18 +15980,16 @@
               <div class="tile oxygen-tile"></div><div class="tile oxygen-tile"></div>
               OR
               <div class="tile venus-tile"></div><div class="tile venus-tile"></div>
-              <br />
-              <div class="resource card" style="font-size:10px">floater</div>
-              <div class="resource card" style="font-size:10px">floater</div>
-              <br />
-              <div class="description">(Raise temperature 2 steps, or raise oxygen 2 steps, or raise Venus 2 steps. Draw 2 cards with floater icons.)</div>
-            </div>
+              <br/>
+              <div class="resource card"></div><div class="resource card"></div>*
+              <br/>
+              <div class="description">(Raise temperature 2 steps, OR oxygen 2 steps, OR Venus 2 steps. Draw 2 cards with floater icons.)</div>
             </div>
           </li>
           <!--P45-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-earth prelude2"
+            class="filterDiv prelude prelude-card tag-earth prelude2 "
           >
             <div class="title background-color-prelude">Board of Directors</div>
             <div class="tag tag1 tag-earth"></div>
@@ -15901,19 +15997,16 @@
             <div class="number" style="margin-left: 99px">#P45</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="resource director"></div>
-              <div class="resource director"></div>
-              <div class="resource director"></div>
-              <div class="resource director"></div>
-              <br />
-              <div class="description" style="font-size:8.5px">(Add 4 directors here. Action: Draw 1 prelude card - either discard it, or pay 12 M€ and remove 1 director to play it.)</div>
-            </div>
+              <div class="resource director"></div><div class="resource director"></div>
+              <div class="resource director"></div><div class="resource director"></div>
+              <br/>
+              <div class="description" style="font-size:9px">(Add 4 director resources here. Action: Draw 1 prelude card — either discard it, or pay 12 M€ and remove 1 director to play it.)</div>
             </div>
           </li>
           <!--P46-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-space prelude2"
+            class="filterDiv prelude prelude-card tag-space prelude2 "
           >
             <div class="title background-color-prelude">Colony Trade Hub</div>
             <div class="tag tag1 tag-space"></div>
@@ -15925,21 +16018,18 @@
                 <div class="production energy"></div>
               </div>
               &nbsp;
-              <div class="resource titanium"></div>
-              <div class="resource titanium"></div>
-              <br />
-              <div class="tile colony"></div>
-              :
+              <div class="resource titanium"></div><div class="resource titanium"></div>
+              <br/>
+              <div class="tile colony"></div>:
               <div class="resource money">2</div>
-              <br />
-              <div class="description">(Increase your energy production 1 step. Gain 2 titanium. Effect: When any colony is placed, gain 2 M€.)</div>
-            </div>
+              <br/>
+              <div class="description">(+1 energy prod. Gain 2 titanium. Effect: When any colony is placed, gain 2 M€.)</div>
             </div>
           </li>
           <!--P47-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-earth prelude2"
+            class="filterDiv prelude prelude-card tag-earth prelude2 "
           >
             <div class="title background-color-prelude">Corridors of Power</div>
             <div class="tag tag1 tag-earth"></div>
@@ -15947,20 +16037,20 @@
             <div class="number" style="margin-left: 99px">#P47</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="description" style="font-size:9px">(Effect: Each time you become party leader, draw 1 card.)</div>
-              <br />
+              <div class="corporate-icon party-leader-icon"></div>:
+              <div class="resource card"></div>
+              <br/>
               <div class="tile rating"></div>
               &nbsp;
               <div class="resource money">4</div>
-              <br />
-              <div class="description">(Raise your TR 1 step and gain 4 M€.)</div>
-            </div>
+              <br/>
+              <div class="description">(Effect: Each time you become party leader, draw 1 card. Raise TR 1 step. Gain 4 M€.)</div>
             </div>
           </li>
           <!--P48-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-space prelude2"
+            class="filterDiv prelude prelude-card tag-space prelude2 "
           >
             <div class="title background-color-prelude">Early Colonization</div>
             <div class="tag tag1 tag-space"></div>
@@ -15970,20 +16060,16 @@
             <div class="content">
               <div class="tile colony"></div>
               &nbsp;
-              <div class="resource energy"></div>
-              <div class="resource energy"></div>
-              <div class="resource energy"></div>
-              <br />
-              <div class="description" style="font-size:9px">(INCREASE ALL COLONY TRACKS 2 STEPS.)</div>
-              <br />
+              <div class="resource energy"></div><div class="resource energy"></div><div class="resource energy"></div>
+              <br/>
+              <div class="description" style="font-size:9px">INCREASE ALL COLONY TRACKS 2 STEPS.</div>
               <div class="description">(Place a colony. Gain 3 energy.)</div>
-            </div>
             </div>
           </li>
           <!--P49-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-space prelude2"
+            class="filterDiv prelude prelude-card tag-space prelude2 "
           >
             <div class="title background-color-prelude">Floating Trade Hub</div>
             <div class="tag tag1 tag-space"></div>
@@ -15991,13 +16077,19 @@
             <div class="number" style="margin-left: 99px">#P49</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="description">(Action: Add 2 floaters to ANY card, or remove any number of floaters here to gain that many of one standard resource.)</div>
+              <div class="resource floater"></div><div class="resource floater"></div>*
+              <br/>
+              X<div class="resource floater"></div>
+              <div class="red-arrow"></div>
+              X<div class="resource wild"></div>
+              <br/>
+              <div class="description">(Action: Add 2 floaters to ANY card, OR remove X floaters to gain X of one standard resource.)</div>
             </div>
           </li>
           <!--P50-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card noneTag prelude2"
+            class="filterDiv prelude prelude-card noneTag prelude2 "
           >
             <div class="title background-color-prelude">Focused Organization</div>
             <div class="prelude-label">PRELUDE</div>
@@ -16005,16 +16097,20 @@
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
               <div class="resource card"></div>
+              &nbsp;
               <div class="resource wild"></div>
-              <br />
-              <div class="description" style="font-size:9px">(Draw 1 card and gain 1 standard resource. Action: Discard 1 card and spend 1 standard resource to draw 1 card and gain 1 standard resource.)</div>
-            </div>
+              <br/>
+              <div class="resource card"></div><div class="resource wild"></div>
+              <div class="red-arrow"></div>
+              <div class="resource card"></div><div class="resource wild"></div>
+              <br/>
+              <div class="description">(Draw 1 card and gain 1 standard resource. Action: Discard 1 card and spend 1 standard resource to draw 1 card and gain 1 standard resource.)</div>
             </div>
           </li>
           <!--P51-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-earth prelude2"
+            class="filterDiv prelude prelude-card tag-earth prelude2 "
           >
             <div class="title background-color-prelude">High Circles</div>
             <div class="tag tag1 tag-earth"></div>
@@ -16023,18 +16119,17 @@
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
               <div class="tile rating"></div>
-              &nbsp;
               <div class="resource card"></div>*
-              &nbsp;
               <div class="resource delegate"></div><div class="resource delegate"></div>
               <br/>
-              <div class="description">(Raise TR 1 step, draw 1 card with party requirement, place 2 delegates. Effect: +1 influence.)</div>
+              <div class="description" style="font-size:9px">Effect: +1 INFLUENCE.</div>
+              <div class="description">(Raise TR 1 step. Draw 1 card with party requirement. Place 2 delegates in 1 party.)</div>
             </div>
           </li>
           <!--P52-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-building prelude2"
+            class="filterDiv prelude prelude-card tag-building prelude2 "
           >
             <div class="title background-color-prelude">Industrial Complex</div>
             <div class="tag tag1 tag-building"></div>
@@ -16042,13 +16137,19 @@
             <div class="number" style="margin-left: 99px">#P52</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="description">(Lose 18 M€. Increase all your productions that are lower than your highest production to that level.)</div>
+              <div class="resource money">-18</div>
+              &nbsp;
+              <div class="production-box production-box-size1a">
+                <div class="production wild">1</div>
+              </div>*
+              <br/>
+              <div class="description">(Lose 18 M€. Increase all your productions that are below 1 to 1.)</div>
             </div>
           </li>
           <!--P53-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-space prelude2"
+            class="filterDiv prelude prelude-card tag-space prelude2 "
           >
             <div class="title background-color-prelude">Main Belt Asteroids</div>
             <div class="tag tag1 tag-space"></div>
@@ -16057,24 +16158,21 @@
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
               <div class="resource asteroid"></div>*
-              <br />
+              <br/>
               <div class="resource money">-5</div>
               &nbsp;
-              <div class="resource asteroid"></div>
-              <div class="resource asteroid"></div>
-              <div class="resource asteroid"></div>
-              <div class="resource asteroid"></div>
-              <div class="resource asteroid"></div>
-              <div class="resource asteroid"></div>
-              <br />
-              <div class="description">(Lose 5 M€. Add 6 asteroid resources here. Action: Gain 1 asteroid to ANY CARD. 1 VP per 2 asteroids here.)</div>
-            </div>
+              <div class="resource asteroid"></div><div class="resource asteroid"></div>
+              <div class="resource asteroid"></div><div class="resource asteroid"></div>
+              <div class="resource asteroid"></div><div class="resource asteroid"></div>
+              <br/>
+              <div class="points">1/2<div class="resource asteroid"></div></div>
+              <div class="description">(Lose 5 M€. Add 6 asteroids here. Action: Gain 1 asteroid to ANY card. 1 VP per 2 asteroids.)</div>
             </div>
           </li>
           <!--P54-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card noneTag prelude2"
+            class="filterDiv prelude prelude-card noneTag prelude2 "
           >
             <div class="title background-color-prelude">Nobel Prize</div>
             <div class="prelude-label">PRELUDE</div>
@@ -16085,13 +16183,14 @@
               &nbsp;
               <div class="resource card"></div><div class="resource card"></div>*
               <br/>
-              <div class="description">(Gain 5 M€. Draw 2 cards with requirements.)</div>
+              <div class="points points-big">2</div>
+              <div class="description">(Gain 5 M€. Draw 2 cards with requirements. 2 VP.)</div>
             </div>
           </li>
           <!--P55-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-space prelude2"
+            class="filterDiv prelude prelude-card tag-space prelude2 "
           >
             <div class="title background-color-prelude">Old Mining Colony</div>
             <div class="tag tag1 tag-space"></div>
@@ -16104,17 +16203,15 @@
               </div>
               &nbsp;
               <div class="tile colony"></div>
-              -
-              <div class="resource card"></div>
-              <br />
-              <div class="description">(Increase your titanium production 1 step. Place 1 colony. Discard 1 card.)</div>
-            </div>
+              -<div class="resource card"></div>
+              <br/>
+              <div class="description">(+1 titanium prod. Place 1 colony. Discard 1 card.)</div>
             </div>
           </li>
           <!--P56-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-earth tag-jovian tag-venus prelude2"
+            class="filterDiv prelude prelude-card tag-earth tag-jovian tag-venus prelude2 "
           >
             <div class="title background-color-prelude">Planetary Alliance</div>
             <div class="tag tag1 tag-earth"></div>
@@ -16126,38 +16223,34 @@
             <div class="content">
               <div class="tile rating"></div><div class="tile rating"></div>
               &nbsp;
-              <div class="resource card"></div><div class="resource card"></div>
+              <div class="resource card"></div><div class="resource card-jovian"></div>
+              <div class="resource card-venus"></div>
               <br/>
-              <div class="description">(Raise your TR 2 steps. Draw 1 Jovian card and 1 Venus card.)</div>
+              <div class="description">(Raise TR 2 steps. Draw 1 Jovian card and 1 Venus card.)</div>
             </div>
           </li>
           <!--P57-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card noneTag prelude2"
+            class="filterDiv prelude prelude-card noneTag prelude2 "
           >
             <div class="title background-color-prelude">Preservation Program</div>
             <div class="prelude-label">PRELUDE</div>
             <div class="number" style="margin-left: 99px">#P57</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="description" style="font-size:9px;margin-bottom:4px">(Effect: SKIP THE FIRST TR YOU GAIN IN EACH GENERATION'S ACTION PHASE.)</div>
-              <div class="tile rating" style="opacity:0.4;text-decoration:line-through"></div>
-              <br />
-              <div class="tile rating"></div>
-              <div class="tile rating"></div>
-              <div class="tile rating"></div>
-              <div class="tile rating"></div>
-              <div class="tile rating"></div>
-              <br />
-              <div class="description">(Raise your TR 5 steps.)</div>
-            </div>
+              <div class="description" style="font-size:9px">Effect: SKIP THE FIRST TR YOU GAIN EACH GENERATION IN THE ACTION PHASE.</div>
+              <br/>
+              <div class="tile rating"></div><div class="tile rating"></div><div class="tile rating"></div>
+              <div class="tile rating"></div><div class="tile rating"></div>
+              <br/>
+              <div class="description">(Raise TR 5 steps.)</div>
             </div>
           </li>
           <!--P58-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-city tag-plant prelude2"
+            class="filterDiv prelude prelude-card tag-city tag-plant prelude2 "
           >
             <div class="title background-color-prelude">Project Eden</div>
             <div class="tag tag1 tag-city"></div>
@@ -16169,41 +16262,37 @@
               <div class="tile ocean-tile"></div>
               <div class="tile city-tile"></div>
               <div class="tile greenery-tile"></div>
-              -3
-              <div class="resource card"></div>
-              <br />
-              <div class="description">(Place 1 ocean tile, 1 city tile, and 1 greenery tile. Discard 3 cards.)</div>
-            </div>
+              -3<div class="resource card"></div>
+              <br/>
+              <div class="description">(Place 1 ocean, 1 city, and 1 greenery tile. Discard 3 cards.)</div>
             </div>
           </li>
           <!--P59-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card noneTag prelude2"
+            class="filterDiv prelude prelude-card noneTag prelude2 "
           >
             <div class="title background-color-prelude">Recession</div>
             <div class="prelude-label">PRELUDE</div>
             <div class="number" style="margin-left: 99px">#P59</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="minus"></div>
-              <div class="resource money">5</div>*
+              <div class="minus"></div><div class="resource money">5</div>*
               &nbsp;
               <div class="production-box production-box-size1a">
                 <div class="production-prefix"><div class="minus"></div></div>
                 <div class="production money">1</div>
               </div>*
-              <br />
+              <br/>
               <div class="resource money">10</div>
-              <br />
-              <div class="description">(Each opponent loses 5 M€ and decreases their M€ production 1 step. You gain 10 M€.)</div>
-            </div>
+              <br/>
+              <div class="description">(Each opponent loses 5 M€ and -1 MC prod. You gain 10 M€.)</div>
             </div>
           </li>
           <!--P60-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card noneTag prelude2"
+            class="filterDiv prelude prelude-card noneTag prelude2 "
           >
             <div class="title background-color-prelude">Rise to Power</div>
             <div class="prelude-label">PRELUDE</div>
@@ -16214,18 +16303,15 @@
                 <div class="production money">3</div>
               </div>
               &nbsp;
-              <div class="resource delegate"></div>
-              <div class="resource delegate"></div>
-              <div class="resource delegate"></div>*
-              <br />
-              <div class="description">(Increase your M€ production 3 steps. Place 3 delegates. YOU MAY PLACE THEM IN SEPARATE PARTIES.)</div>
-            </div>
+              <div class="resource delegate"></div><div class="resource delegate"></div><div class="resource delegate"></div>*
+              <br/>
+              <div class="description">(+3 MC prod. Place 3 delegates. YOU MAY PLACE THEM IN SEPARATE PARTIES.)</div>
             </div>
           </li>
           <!--P61-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-microbe tag-plant prelude2"
+            class="filterDiv prelude prelude-card tag-microbe tag-plant prelude2 "
           >
             <div class="title background-color-prelude">Soil Bacteria</div>
             <div class="tag tag1 tag-microbe"></div>
@@ -16234,25 +16320,20 @@
             <div class="number" style="margin-left: 99px">#P61</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="resource-tag tag-plant"></div>/<div class="resource-tag tag-microbe"></div>
-              :
+              <div class="resource-tag tag-plant"></div>/<div class="resource-tag tag-microbe"></div>:
               <div class="resource plant"></div>
-              <br />
-              <div class="resource card" style="font-size:10px">microbe</div>
-              <div class="resource card" style="font-size:10px">microbe</div>
+              <br/>
+              <div class="resource card"></div><div class="resource card"></div>*
               &nbsp;
-              <div class="resource plant"></div>
-              <div class="resource plant"></div>
-              <div class="resource plant"></div>
-              <br />
-              <div class="description">(Effect: When playing a plant or microbe tag, gain 1 plant. Draw 2 microbe cards and gain 3 plants.)</div>
-            </div>
+              <div class="resource plant"></div><div class="resource plant"></div><div class="resource plant"></div>
+              <br/>
+              <div class="description">(Effect: When playing plant or microbe tag, gain 1 plant. Draw 2 microbe cards. Gain 3 plants.)</div>
             </div>
           </li>
           <!--P62-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-space tag-jovian tag-earth tag-venus prelude2"
+            class="filterDiv prelude prelude-card tag-space tag-jovian tag-earth tag-venus prelude2 "
           >
             <div class="title background-color-prelude">Space Lanes</div>
             <div class="tag tag1 tag-space"></div>
@@ -16264,23 +16345,18 @@
             <div class="content">
               <div class="resource-tag tag-jovian"></div>
               <div class="resource-tag tag-earth"></div>
-              <div class="resource-tag tag-venus"></div>
-              :
-              <div class="minus"></div>
-              <div class="resource money">2</div>
-              <br />
-              <div class="resource titanium"></div>
-              <div class="resource titanium"></div>
-              <div class="resource titanium"></div>
-              <br />
-              <div class="description">(Effect: When you play a Jovian, Earth, or Venus tag, you pay 2 M€ less for it. Gain 3 titanium.)</div>
-            </div>
+              <div class="resource-tag tag-venus"></div>:
+              <div class="minus"></div><div class="resource money">2</div>
+              <br/>
+              <div class="resource titanium"></div><div class="resource titanium"></div><div class="resource titanium"></div>
+              <br/>
+              <div class="description">(Effect: When playing Jovian, Earth, or Venus tag, pay 2 M€ less. Gain 3 titanium.)</div>
             </div>
           </li>
           <!--P63-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-building prelude2"
+            class="filterDiv prelude prelude-card tag-building prelude2 "
           >
             <div class="title background-color-prelude">Suitable Infrastructure</div>
             <div class="tag tag1 tag-building"></div>
@@ -16288,16 +16364,21 @@
             <div class="number" style="margin-left: 99px">#P63</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
+              <div class="production-box production-box-size1a">
+                <div class="production wild">1</div>
+              </div>*:
+              <div class="resource money">2</div>
+              <br/>
               <div class="resource steel"></div><div class="resource steel"></div><div class="resource steel"></div>
               <div class="resource steel"></div><div class="resource steel"></div>
               <br/>
-              <div class="description">(Gain 5 steel.)</div>
+              <div class="description">(Effect: Once per action, if you increase any production, gain 2 M€. Gain 5 steel.)</div>
             </div>
           </li>
           <!--P64-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-earth prelude2"
+            class="filterDiv prelude prelude-card tag-earth prelude2 "
           >
             <div class="title background-color-prelude">Terraforming Deal</div>
             <div class="tag tag1 tag-earth"></div>
@@ -16305,22 +16386,20 @@
             <div class="number" style="margin-left: 99px">#P64</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="tile rating"></div>
-              :
+              <div class="tile rating"></div>:
               <div class="resource money">2</div>
-              <br />
+              <br/>
               <div class="production-box">
                 <div class="production money">2</div>
               </div>
-              <br />
-              <div class="description">(Effect: Each step your TR is raised, gain 2 M€. Increase your M€ production 2 steps.)</div>
-            </div>
+              <br/>
+              <div class="description">(Effect: Each TR step you gain, gain 2 M€. +2 MC production.)</div>
             </div>
           </li>
           <!--P65-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-venus prelude2"
+            class="filterDiv prelude prelude-card tag-venus prelude2 "
           >
             <div class="title background-color-prelude">Venus Contract</div>
             <div class="tag tag1 tag-venus"></div>
@@ -16328,22 +16407,20 @@
             <div class="number" style="margin-left: 99px">#P65</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="tile venus-tile"></div>
-              :
+              <div class="tile venus-tile"></div>:
               <div class="resource money">3</div>
-              <br />
-              <div class="resource card" style="font-size:10px">venus</div>
+              <br/>
+              <div class="resource card-venus"></div>
               &nbsp;
               <div class="tile rating"></div>
-              <br />
-              <div class="description">(Effect: Each step you raise Venus, gain 3 M€. Draw 1 Venus card. Raise your TR 1 step.)</div>
-            </div>
+              <br/>
+              <div class="description">(Effect: Each Venus step you raise, gain 3 M€. Draw 1 Venus card. Raise TR 1 step.)</div>
             </div>
           </li>
           <!--P66-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-space prelude2"
+            class="filterDiv prelude prelude-card tag-space prelude2 "
           >
             <div class="title background-color-prelude">Venus L1 Shade</div>
             <div class="tag tag1 tag-space"></div>
@@ -16359,7 +16436,7 @@
           <!--P67-->
           <li
             onclick="getClickedCard();"
-            class="filterDiv prelude prelude-card tag-earth prelude2"
+            class="filterDiv prelude prelude-card tag-earth prelude2 "
           >
             <div class="title background-color-prelude">World Government Advisor</div>
             <div class="tag tag1 tag-earth"></div>
@@ -16367,15 +16444,13 @@
             <div class="number" style="margin-left: 99px">#P67</div>
             <div class="prelude-icon preludeCard-icon"></div>
             <div class="content">
-              <div class="description" style="font-size:9px">ACTION: RAISE 1 GLOBAL PARAMETER WITHOUT GETTING TR OR BONUSES.</div>
-              <br />
-              <div class="tile rating"></div>
-              <div class="tile rating"></div>
+              <div class="description" style="font-size:9px">Action: RAISE 1 GLOBAL PARAMETER WITHOUT GETTING TR OR BONUSES.</div>
+              <br/>
+              <div class="tile rating"></div><div class="tile rating"></div>
               &nbsp;
               <div class="resource card"></div>
-              <br />
-              <div class="description">(Raise your TR 2 steps. Draw 1 card.)</div>
-            </div>
+              <br/>
+              <div class="description">(Raise TR 2 steps. Draw 1 card.)</div>
             </div>
           </li>
 
