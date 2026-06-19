@@ -29,6 +29,7 @@
       position: relative;
       margin: 0 auto;
       margin-top: 20px;
+      min-height: 620px;
     }
 
     .board-cont.board-without-venus {
@@ -177,7 +178,12 @@
     .global-numbers {
       font-family: Prototype, sans-serif;
       font-size: 14px;
-      margin: 11px 0 0 16px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 670px;
+      height: 620px;
+      pointer-events: none;
     }
     .global-numbers-value {
       width: 26px;
@@ -259,7 +265,8 @@
       color: #3682b4;
       font-family: Prototype, sans-serif;
       font-size: 30px;
-      margin: 524px 0 0 286px;
+      top: 524px;
+      left: 286px;
     }
 
     /* SVG legend */
@@ -289,9 +296,9 @@
       background-size: contain;
       background-repeat: no-repeat;
     }
-    .param-temp-icon  { background-image: url('https://raw.githubusercontent.com/terraforming-mars/terraforming-mars/main/assets/global-parameters/temperature.png'); margin: 590px 0 0 430px; }
-    .param-oxy-icon   { background-image: url('https://raw.githubusercontent.com/terraforming-mars/terraforming-mars/main/assets/global-parameters/oxygen.png'); margin: 590px 0 0 115px; }
-    .param-venus-icon { background-image: url('https://raw.githubusercontent.com/terraforming-mars/terraforming-mars/main/assets/global-parameters/venus.png'); margin: 3px 0 0 278px; }
+    .param-temp-icon  { background-image: url('https://raw.githubusercontent.com/terraforming-mars/terraforming-mars/main/assets/global-parameters/temperature.png'); position:absolute; top:590px; left:430px; }
+    .param-oxy-icon   { background-image: url('https://raw.githubusercontent.com/terraforming-mars/terraforming-mars/main/assets/global-parameters/oxygen.png'); position:absolute; top:590px; left:115px; }
+    .param-venus-icon { background-image: url('https://raw.githubusercontent.com/terraforming-mars/terraforming-mars/main/assets/global-parameters/venus.png'); position:absolute; top:3px; left:278px; }
   </style>
 </head>
 <body>
