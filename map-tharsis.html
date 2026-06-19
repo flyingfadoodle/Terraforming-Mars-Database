@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Tharsis Map - TM Database</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #000;
+      font-family: 'Prototype', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #c8a848;
+      font-size: 22px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Back button */
+    .back-btn-unused {
+      display: inline-block;
+      font-family: 'Prototype', serif;
+      font-size: 13px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #c8a848;
+      background: rgba(0,0,0,0.7);
+      border: 2px solid #8b6914;
+      border-radius: 6px;
+      padding: 8px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 24px;
+    }
+    .back-btn:hover { background: rgba(139,105,20,0.3); }
+
+    /* Board container */
+    .board-wrap {
+      position: relative;
+      width: 670px;
+      height: 630px;
+    }
+
+    .board-bg {
+      position: absolute;
+      top: 0; left: 30px;
+      width: 620px;
+      height: 560px;
+      background-image: url('https://raw.githubusercontent.com/terraforming-mars/terraforming-mars/main/assets/board/mars.png');
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+    }
+
+    /* Hex spaces */
+    .board-spaces {
+      position: absolute;
+      top: 82px;
+      left: 123px;
+      width: 600px;
+      height: 488px;
+    }
+
+    .hex {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+    }
+
+    .hex.ocean {
+      background: rgba(0, 100, 200, 0.55);
+      border: none;
+    }
+    .hex.land {
+      background: rgba(180, 80, 20, 0.15);
+    }
+    .hex.volcanic {
+      background: rgba(180, 80, 20, 0.15);
+      outline: none;
+    }
+    .hex.restricted {
+      background: rgba(0,0,0,0.4);
+    }
+
+    /* Volcanic marker (bold border effect via box-shadow won't work with clip-path, use pseudo via wrapper) */
+    .hex-wrap {
+      position: absolute;
+    }
+    .hex-wrap.volcanic > .hex {
+      background: rgba(180, 80, 20, 0.2);
+    }
+    .hex-wrap.volcanic::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      border: 3px solid rgba(255,180,50,0.6);
+      pointer-events: none;
+    }
+
+    /* Bonus icons */
+    .bonuses {
+      position: absolute;
+      top: 0; left: 0;
+      width: 44px;
+      height: 44px;
+      pointer-events: none;
+    }
+    .bonus {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 2px;
+    }
+    /* Bonus positions: 1 bonus centered, 2 bonuses side by side, 3 bonuses triangle */
+    .b1 { top: 15px; left: 15px; }
+    .b1-of-2 { top: 15px; left: 6px; }
+    .b2-of-2 { top: 15px; left: 24px; }
+    .b1-of-3 { top: 8px; left: 15px; }
+    .b2-of-3 { top: 22px; left: 6px; }
+    .b3-of-3 { top: 22px; left: 24px; }
+
+    .bonus-plant { background-image: url('images/resources/plant.png'); }
+    .bonus-steel { background-image: url('images/resources/steel.png'); }
+    .bonus-titanium { background-image: url('images/resources/titanium.png'); }
+    .bonus-card { background-image: url('images/resources/card.png'); height: 18px; }
+
+    /* Space ID label (small) */
+    .space-id {
+      position: absolute;
+      bottom: 2px;
+      right: 3px;
+      font-size: 7px;
+      color: rgba(255,255,255,0.5);
+      pointer-events: none;
+      font-family: Arial, sans-serif;
+    }
+
+    /* SVG labels overlay */
+    .board-labels {
+      position: absolute;
+      top: 82px;
+      left: 123px;
+      width: 600px;
+      height: 488px;
+      pointer-events: none;
+    }
+
+    /* Tracks */
+    .tracks {
+      position: absolute;
+      top: 82px;
+      left: 30px;
+      width: 88px;
+      height: 488px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .track {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .track-label {
+      color: #c8a848;
+      font-size: 8px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .track-val {
+      color: #888;
+      font-size: 9px;
+      line-height: 1.4;
+      text-align: center;
+    }
+    .track-val.active {
+      color: #fff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<style>
+  #tab-bar { width:100%; background:#1a0e00; border-bottom:2px solid #8b6914; display:flex; align-items:center; padding:0 20px; gap:4px; }
+  #tab-bar a { font-family:Prototype,serif; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#a88848; text-decoration:none; padding:10px 20px 8px; border-bottom:3px solid transparent; display:inline-block; }
+  #tab-bar a:hover { color:#e8c848; }
+  #tab-bar a.active { color:#e8c848; border-bottom-color:#c8a848; }
+</style>
+<div id="tab-bar">
+  <a href="index.html">Cards</a><a href="awards.html">Awards &amp; Milestones</a><a href="map-tharsis.html" class="active">Maps</a>
+</div>
+<h1>Tharsis Republic — Map</h1>
+
+<div class="board-wrap">
+
+  <!-- Mars terrain background -->
+  <div class="board-bg"></div>
+
+  <!-- Hex spaces -->
+  <div class="board-spaces" id="board"></div>
+
+  <!-- SVG labels -->
+  <svg class="board-labels" viewBox="0 0 600 488">
+    <!-- Ascraeus Mons -->
+    <g transform="translate(95, 192)">
+      <text font-family="Arial" font-size="9" font-weight="bold" fill="white" opacity="0.85">
+        <tspan dy="0">Ascraeus</tspan>
+        <tspan x="12" dy="11">Mons</tspan>
+      </text>
+      <line x1="38" y1="10" x2="88" y2="16" stroke="white" stroke-width="1.5" stroke-opacity="0.4"/>
+      <circle cx="88" cy="16" r="2" fill="white" opacity="0.6"/>
+    </g>
+    <!-- Pavonis Mons -->
+    <g transform="translate(90, 230)">
+      <text font-family="Arial" font-size="9" font-weight="bold" fill="white" opacity="0.85">
+        <tspan dy="0">Pavonis</tspan>
+        <tspan x="4" dy="11">Mons</tspan>
+      </text>
+      <line x1="35" y1="10" x2="72" y2="16" stroke="white" stroke-width="1.5" stroke-opacity="0.4"/>
+      <circle cx="72" cy="16" r="2" fill="white" opacity="0.6"/>
+    </g>
+    <!-- Arsia Mons -->
+    <g transform="translate(77, 275)">
+      <text font-family="Arial" font-size="9" font-weight="bold" fill="white" opacity="0.85">
+        <tspan dy="0">Arsia</tspan>
+        <tspan x="-2" dy="11">Mons</tspan>
+      </text>
+      <line x1="25" y1="10" x2="49" y2="16" stroke="white" stroke-width="1.5" stroke-opacity="0.4"/>
+      <circle cx="49" cy="16" r="2" fill="white" opacity="0.6"/>
+    </g>
+    <!-- Tharsis Tholus -->
+    <g transform="translate(85, 175)">
+      <text font-family="Arial" font-size="9" font-weight="bold" fill="white" opacity="0.85" x="47">
+        <tspan dy="0">Tharsis</tspan>
+        <tspan dy="11" x="48">Tholus</tspan>
+      </text>
+      <line y1="-3" x2="160" y2="2" stroke="white" stroke-width="1.5" stroke-opacity="0.4" x1="90"/>
+      <circle cx="160" cy="2" r="2" fill="white" opacity="0.6"/>
+    </g>
+    <!-- Noctis City -->
+    <g transform="translate(85, 320)">
+      <text font-family="Arial" font-size="9" font-weight="bold" fill="white" opacity="0.85">
+        <tspan dy="0">Noctis</tspan>
+        <tspan x="7" dy="11">City</tspan>
+      </text>
+      <line x1="30" y1="10" x2="140" y2="-30" stroke="white" stroke-width="1.5" stroke-opacity="0.4"/>
+      <circle cx="140" cy="-30" r="2" fill="white" opacity="0.6"/>
+    </g>
+  </svg>
+
+</div>
+
+<script>
+// Tharsis board data from TharsisBoard.ts
+// Format: [spaceId, type, bonuses[], volcanic]
+// Types: L=land, O=ocean, V=volcanic(land)
+// Bonuses: P=plant, S=steel, T=titanium, C=card
+// Space IDs 03-63 (01=Ganymede colony, 02=Phobos - skip)
+
+const S = 'steel', P = 'plant', C = 'card', T = 'titanium';
+
+const spaces = [
+  // y=0 (row 0, 5 tiles, ids 03-07)
+  {id:'03', type:'L', bonuses:[S,S]},
+  {id:'04', type:'O', bonuses:[S,S]},
+  {id:'05', type:'L', bonuses:[]},
+  {id:'06', type:'O', bonuses:[C]},
+  {id:'07', type:'O', bonuses:[]},
+  // y=1 (row 1, 6 tiles, ids 08-13)
+  {id:'08', type:'L', bonuses:[]},
+  {id:'09', type:'V', bonuses:[S]},
+  {id:'10', type:'L', bonuses:[]},
+  {id:'11', type:'L', bonuses:[]},
+  {id:'12', type:'L', bonuses:[]},
+  {id:'13', type:'O', bonuses:[C,C]},
+  // y=2 (row 2, 7 tiles, ids 14-20)
+  {id:'14', type:'V', bonuses:[C]},
+  {id:'15', type:'L', bonuses:[]},
+  {id:'16', type:'L', bonuses:[]},
+  {id:'17', type:'L', bonuses:[]},
+  {id:'18', type:'L', bonuses:[]},
+  {id:'19', type:'L', bonuses:[]},
+  {id:'20', type:'L', bonuses:[S]},
+  // y=3 (row 3, 8 tiles, ids 21-28)
+  {id:'21', type:'V', bonuses:[P,T]},
+  {id:'22', type:'L', bonuses:[P]},
+  {id:'23', type:'L', bonuses:[P]},
+  {id:'24', type:'L', bonuses:[P]},
+  {id:'25', type:'L', bonuses:[P,P]},
+  {id:'26', type:'L', bonuses:[P]},
+  {id:'27', type:'L', bonuses:[P]},
+  {id:'28', type:'O', bonuses:[P,P]},
+  // y=4 (row 4, 9 tiles, ids 29-37)
+  {id:'29', type:'V', bonuses:[P,P]},
+  {id:'30', type:'L', bonuses:[P,P]},
+  {id:'31', type:'L', bonuses:[P,P], noctis:true}, // Noctis City - doNotShuffle
+  {id:'32', type:'O', bonuses:[P,P]},
+  {id:'33', type:'O', bonuses:[P,P]},
+  {id:'34', type:'O', bonuses:[P,P]},
+  {id:'35', type:'L', bonuses:[P,P]},
+  {id:'36', type:'L', bonuses:[P,P]},
+  {id:'37', type:'L', bonuses:[P,P]},
+  // y=5 (row 5, 8 tiles, ids 38-45)
+  {id:'38', type:'L', bonuses:[P]},
+  {id:'39', type:'L', bonuses:[P,P]},
+  {id:'40', type:'L', bonuses:[P]},
+  {id:'41', type:'L', bonuses:[P]},
+  {id:'42', type:'L', bonuses:[P]},
+  {id:'43', type:'O', bonuses:[P]},
+  {id:'44', type:'O', bonuses:[P]},
+  {id:'45', type:'O', bonuses:[P]},
+  // y=6 (row 6, 7 tiles, ids 46-52)
+  {id:'46', type:'L', bonuses:[]},
+  {id:'47', type:'L', bonuses:[]},
+  {id:'48', type:'L', bonuses:[]},
+  {id:'49', type:'L', bonuses:[]},
+  {id:'50', type:'L', bonuses:[]},
+  {id:'51', type:'L', bonuses:[P]},
+  {id:'52', type:'L', bonuses:[]},
+  // y=7 (row 7, 6 tiles, ids 53-58)
+  {id:'53', type:'L', bonuses:[S,S]},
+  {id:'54', type:'L', bonuses:[]},
+  {id:'55', type:'L', bonuses:[C]},
+  {id:'56', type:'L', bonuses:[C]},
+  {id:'57', type:'L', bonuses:[]},
+  {id:'58', type:'L', bonuses:[T]},
+  // y=8 (row 8, 5 tiles, ids 59-63)
+  {id:'59', type:'L', bonuses:[S]},
+  {id:'60', type:'L', bonuses:[S,S]},
+  {id:'61', type:'L', bonuses:[]},
+  {id:'62', type:'L', bonuses:[]},
+  {id:'63', type:'O', bonuses:[T,T]},
+];
+
+// CSS margin positions from board_items_positions.less (top, left)
+const positions = {
+  '03':[34,104], '04':[34,153], '05':[34,202], '06':[34,251], '07':[34,300],
+  '08':[75,80],  '09':[75,129], '10':[75,178], '11':[75,227], '12':[75,276], '13':[75,325],
+  '14':[116,55], '15':[116,104],'16':[116,153],'17':[116,202],'18':[116,251],'19':[116,300],'20':[116,349],
+  '21':[157,31], '22':[157,80], '23':[157,129],'24':[157,178],'25':[157,227],'26':[157,276],'27':[157,325],'28':[157,374],
+  '29':[198,6],  '30':[198,55], '31':[198,104],'32':[198,153],'33':[198,202],'34':[198,251],'35':[198,300],'36':[198,349],'37':[198,398],
+  '38':[239,31], '39':[239,80], '40':[239,129],'41':[239,178],'42':[239,227],'43':[239,276],'44':[239,325],'45':[239,374],
+  '46':[280,55], '47':[280,104],'48':[280,153],'49':[280,202],'50':[280,251],'51':[280,300],'52':[280,349],
+  '53':[321,80], '54':[321,129],'55':[321,178],'56':[321,227],'57':[321,276],'58':[321,325],
+  '59':[362,104],'60':[362,153],'61':[362,202],'62':[362,251],'63':[362,300],
+};
+
+const bonusClass = { steel:'bonus-steel', plant:'bonus-plant', titanium:'bonus-titanium', card:'bonus-card' };
+
+function bonusPositionClass(idx, total) {
+  if (total === 1) return 'b1';
+  if (total === 2) return idx === 0 ? 'b1-of-2' : 'b2-of-2';
+  if (idx === 0) return 'b1-of-3';
+  if (idx === 1) return 'b2-of-3';
+  return 'b3-of-3';
+}
+
+const board = document.getElementById('board');
+
+spaces.forEach(sp => {
+  const pos = positions[sp.id];
+  if (!pos) return;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'hex-wrap' + (sp.type === 'V' ? ' volcanic' : '');
+  wrap.style.top = pos[0] + 'px';
+  wrap.style.left = pos[1] + 'px';
+  wrap.style.position = 'absolute';
+
+  const hex = document.createElement('div');
+  hex.className = 'hex ' + (sp.type === 'O' ? 'ocean' : sp.type === 'V' ? 'volcanic' : 'land');
+  hex.title = '#' + sp.id;
+
+  // Bonuses
+  if (sp.bonuses.length > 0) {
+    const bonusWrap = document.createElement('div');
+    bonusWrap.className = 'bonuses';
+    sp.bonuses.forEach((b, i) => {
+      const div = document.createElement('div');
+      div.className = 'bonus ' + bonusClass[b] + ' ' + bonusPositionClass(i, sp.bonuses.length);
+      bonusWrap.appendChild(div);
+    });
+    hex.appendChild(bonusWrap);
+  }
+
+  wrap.appendChild(hex);
+  board.appendChild(wrap);
+});
+</script>
+</body>
+</html>
