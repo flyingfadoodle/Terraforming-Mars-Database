@@ -51,7 +51,7 @@
     /* Icon: exact sprite size, clip to one icon height */
     .card-icon {
       width: 156px;
-      height: 112px;
+      height: 100px;
       background-repeat: no-repeat;
       background-size: 156px 1800px;
       flex-shrink: 0;
@@ -162,7 +162,7 @@ function buildGrid(items, containerId, type) {
 
     const icon = document.createElement('div');
     icon.className = `card-icon ${type}`;
-    icon.style.backgroundPositionY = -(i * 112) + 'px';
+    icon.style.backgroundPositionY = -(i * 100) + 'px';
 
     const name = document.createElement('div');
     name.className = 'card-name';
