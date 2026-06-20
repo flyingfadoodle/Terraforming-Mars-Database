@@ -458,7 +458,7 @@ function buildBoard(contId, spaces, outerSpaces, legendKey) {
   spaces.forEach(([id, type, bonuses]) => {
     const sp = document.createElement('div');
     const typeClass = type === 'O' ? 'board-space-type-ocean'
-                    : type === 'V' ? 'board-space-type-land-volcanic'
+                    : type === 'V' ? 'board-space-type-land'
                     : 'board-space-type-land';
     sp.className = `board-space board-space-${id} ${typeClass}`;
 
