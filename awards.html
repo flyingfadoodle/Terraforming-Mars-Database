@@ -339,6 +339,26 @@
   <h2>Awards</h2>
   <div class="grid" id="awards-grid"></div>
 </div>
+  <!-- RANDOMIZER -->
+  <div id="randomizer" style="margin-top:60px;padding:40px 20px 80px;border-top:1px solid #8b6914;">
+    <h2 style="font-family:Prototype,serif;font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:#c8a848;border-bottom:1px solid #8b6914;padding-bottom:8px;margin-bottom:24px;">Milestone &amp; Award Randomizer</h2>
+
+    <div style="display:flex;gap:12px;margin-bottom:40px;">
+      <button onclick="randomize()" style="font-family:Prototype,serif;font-size:16px;letter-spacing:.1em;color:#000;background:linear-gradient(180deg,#e8c840,#b09020);border:none;border-radius:8px;padding:14px 32px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.5);">&#9654; RANDOMIZE</button>
+      <button onclick="resetRand()" style="font-family:Prototype,serif;font-size:13px;color:#888;background:none;border:1px solid #444;border-radius:6px;padding:10px 20px;cursor:pointer;">&#8635; RESET</button>
+    </div>
+
+    <div style="margin-bottom:12px;font-family:Prototype,serif;font-size:13px;letter-spacing:.12em;color:#6aaa30;text-transform:uppercase;">Milestones</div>
+    <div id="milestone-slots" style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px;">
+      <div class="rand-slot"></div><div class="rand-slot"></div><div class="rand-slot"></div><div class="rand-slot"></div><div class="rand-slot"></div>
+    </div>
+
+    <div style="margin-bottom:12px;font-family:Prototype,serif;font-size:13px;letter-spacing:.12em;color:#d4a020;text-transform:uppercase;">Awards</div>
+    <div id="award-slots" style="display:flex;gap:16px;flex-wrap:wrap;">
+      <div class="rand-slot"></div><div class="rand-slot"></div><div class="rand-slot"></div><div class="rand-slot"></div><div class="rand-slot"></div>
+    </div>
+  </div>
+
 
 <script>
 const BASE = 'https://raw.githubusercontent.com/terraforming-mars/terraforming-mars/main/assets/ma/';
