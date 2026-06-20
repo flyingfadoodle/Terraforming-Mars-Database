@@ -285,6 +285,12 @@ function buildTile(item, type) {
   iconDiv.appendChild(img);
   tile.appendChild(iconDiv);
 
+  // Name bar
+  const nameDiv = document.createElement('div');
+  nameDiv.className = `ma-name ${type}`;
+  nameDiv.textContent = item.name;
+  tile.appendChild(nameDiv);
+
 
 
   // Tooltip
