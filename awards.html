@@ -546,33 +546,38 @@ const MABASE='https://raw.githubusercontent.com/terraforming-mars/terraforming-m
 function shuf(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
 
 function makeRC(item, type) {
+  const isMilestone = type === 'm';
+  const topColor = isMilestone ? 'linear-gradient(180deg,#c8a840,#a07820)' : 'linear-gradient(180deg,#d4b840,#b09020)';
+  const botColor = isMilestone ? 'linear-gradient(180deg,#4a7a20,#2a5000)' : 'linear-gradient(180deg,#c49010,#906000)';
+
   const wrap = document.createElement('div');
-  wrap.className = 'rand-slot';
+  wrap.style.cssText = 'width:140px;height:140px;position:relative;perspective:800px;flex-shrink:0;';
 
   const flip = document.createElement('div');
-  flip.className = 'flip-card';
+  flip.style.cssText = 'width:140px;height:140px;position:relative;transform-style:preserve-3d;transition:transform 0.55s cubic-bezier(0.4,0,0.2,1);transform:rotateY(180deg);';
 
+  // Back face
   const back = document.createElement('div');
-  back.className = 'flip-back';
+  back.style.cssText = 'position:absolute;top:0;left:0;width:140px;height:140px;backface-visibility:hidden;border-radius:10px;transform:rotateY(180deg);background:linear-gradient(135deg,#1a1000,#3a2800);border:2px solid #8b6914;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:28px;color:rgba(139,105,20,0.4);box-sizing:border-box;';
+  back.textContent = 'TM';
 
+  // Front face - flex column
   const front = document.createElement('div');
-  front.className = 'flip-front';
+  front.style.cssText = 'position:absolute;top:0;left:0;width:140px;height:140px;backface-visibility:hidden;border-radius:10px;overflow:hidden;background:#e8e4d8;border:2px solid #aaa;display:flex;flex-direction:column;box-sizing:border-box;';
 
+  // Header
   const hdr = document.createElement('div');
-  hdr.className = 'rand-header';
-  hdr.style.background = type==='m'
-    ? 'linear-gradient(180deg,#c8a840,#a07820)'
-    : 'linear-gradient(180deg,#d4b840,#b09020)';
+  hdr.style.cssText = `width:100%;height:18px;min-height:18px;max-height:18px;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:8px;letter-spacing:.05em;color:#fff;background:${topColor};`;
 
+  // Image
   const img = document.createElement('img');
   img.src = MABASE + item.i + '.png';
   img.alt = item.n;
+  img.style.cssText = 'width:140px;height:103px;min-height:103px;max-height:103px;object-fit:contain;display:block;';
 
+  // Name bar
   const nm = document.createElement('div');
-  nm.className = 'rand-name';
-  nm.style.background = type==='m'
-    ? 'linear-gradient(180deg,#4a7a20,#2a5000)'
-    : 'linear-gradient(180deg,#c49010,#906000)';
+  nm.style.cssText = `width:100%;height:19px;min-height:19px;max-height:19px;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:${botColor};`;
   nm.textContent = item.n;
 
   front.appendChild(hdr);
@@ -581,8 +586,13 @@ function makeRC(item, type) {
   flip.appendChild(back);
   flip.appendChild(front);
   wrap.appendChild(flip);
+
+  // Add revealed class trigger
+  wrap._flip = flip;
+
   return wrap;
 }
+
 
 function doRandom() {
   const mc=document.getElementById('r-milestones');
@@ -590,11 +600,11 @@ function doRandom() {
   mc.innerHTML=''; ac.innerHTML='';
   shuf(RM).slice(0,5).forEach((m,i)=>{
     const card=makeRC(m,'m'); mc.appendChild(card);
-    setTimeout(()=>card.classList.add('revealed'), 200+i*180);
+    setTimeout(()=>{ card._flip.style.transform='rotateY(0deg)'; }, 200+i*180);
   });
   shuf(RA).slice(0,5).forEach((a,i)=>{
     const card=makeRC(a,'a'); ac.appendChild(card);
-    setTimeout(()=>card.classList.add('revealed'), 200+i*180);
+    setTimeout(()=>{ card._flip.style.transform='rotateY(0deg)'; }, 200+i*180);
   });
 }
 
