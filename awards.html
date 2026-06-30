@@ -514,18 +514,20 @@ MILESTONES.forEach(m => mg.appendChild(buildTile(m, 'milestone')));
 AWARDS.forEach(a => ag.appendChild(buildTile(a, 'award')));
 </script>
 <script>
+const TAGBASE = 'https://raw.githubusercontent.com/terraforming-mars/terraforming-mars/main/assets/tags/';
 const RM=[
-  {n:'Briber',i:'briber'},{n:'Builder',i:'builder7'},{n:'Coastguard',i:'coastguard'},
-  {n:'Diversifier',i:'diversifier'},{n:'Ecologist',i:'ecologist'},{n:'Energizer',i:'energizer'},
-  {n:'Engineer',i:'engineer'},{n:'Farmer',i:'farmer'},{n:'Forester',i:'forester'},
-  {n:'Fundraiser',i:'fundraiser'},{n:'Gardener',i:'gardener'},{n:'Generalist',i:'generalist'},
+  {n:'Briber',i:'briber'},{n:'Builder',i:'builder7',tag:'building.png'},{n:'Coastguard',i:'coastguard'},
+  {n:'Diversifier',i:'diversifier'},{n:'Ecologist',i:'ecologist',tag:'microbe.png'},{n:'Energizer',i:'energizer',tag:'power.png'},
+  {n:'Engineer',i:'engineer',tag:'power.png'},{n:'Farmer',i:'farmer',tag:'animal.png'},{n:'Forester',i:'forester',tag:'plant.png'},
+  {n:'Fundraiser',i:'fundraiser'},{n:'Gardener',i:'gardener',tag:'plant.png'},{n:'Generalist',i:'generalist'},
   {n:'Geologist',i:'geologist'},{n:'Hydrologist',i:'hydrologist'},{n:'Landshaper',i:'landshaper'},
-  {n:'Legend',i:'legend4'},{n:'Lobbyist',i:'lobbyist'},{n:'Mayor',i:'mayor'},
-  {n:'Merchant',i:'merchant'},{n:'Metallurgist',i:'metallurgist'},{n:'Philantropist',i:'philantropist'},
+  {n:'Legend',i:'legend4',tag:'event.png'},{n:'Lobbyist',i:'lobbyist'},{n:'Mayor',i:'mayor',tag:'city.png'},
+  {n:'Merchant',i:'merchant'},{n:'Metallurgist',i:'metallurgist',tag:'building.png'},{n:'Philantropist',i:'philantropist'},
   {n:'Pioneer',i:'pioneer4'},{n:'Planetologist',i:'planetologist'},{n:'Planner',i:'planner'},
-  {n:'Producer',i:'producer'},{n:'Researcher',i:'researcher'},{n:'Rim Settler',i:'rim-settler'},
-  {n:'Spacefarer',i:'spacefarer4'},{n:'Sponsor',i:'sponsor'},{n:'Tactician',i:'tactician4'},
-  {n:'Terraformer',i:'terraformer29'},{n:'Terran',i:'terran5'},{n:'Thawer',i:'thawer'},{n:'Trader',i:'trader'},
+  {n:'Producer',i:'producer'},{n:'Researcher',i:'researcher',tag:'science.png'},{n:'Rim Settler',i:'rim-settler',tag:'jovian.png'},
+  {n:'Spacefarer',i:'spacefarer4',tag:'space.png'},{n:'Sponsor',i:'sponsor'},{n:'Tactician',i:'tactician4'},
+  {n:'Terraformer',i:'terraformer29'},{n:'Terran',i:'terran5',tag:'earth.png'},{n:'Thawer',i:'thawer'},
+  {n:'Trader',i:'trader'},
 ];
 const RA=[
   {n:'Administrator',i:'administrator'},{n:'Banker',i:'banker'},{n:'Benefactor',i:'benefactor'},
@@ -570,10 +572,19 @@ function makeRC(item, type) {
   hdr.style.cssText = `width:100%;height:18px;min-height:18px;max-height:18px;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:8px;letter-spacing:.05em;color:#fff;background:${topColor};`;
 
   // Image
+  const imgWrap = document.createElement('div');
+  imgWrap.style.cssText = 'width:140px;height:103px;min-height:103px;max-height:103px;position:relative;overflow:hidden;flex-shrink:0;';
   const img = document.createElement('img');
   img.src = MABASE + item.i + '.png';
   img.alt = item.n;
-  img.style.cssText = 'width:140px;height:103px;min-height:103px;max-height:103px;object-fit:contain;display:block;';
+  img.style.cssText = 'width:140px;height:103px;object-fit:contain;display:block;';
+  imgWrap.appendChild(img);
+  if (item.tag) {
+    const tagImg = document.createElement('img');
+    tagImg.src = TAGBASE + item.tag;
+    tagImg.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.8));pointer-events:none;';
+    imgWrap.appendChild(tagImg);
+  }
 
   // Name bar
   const nm = document.createElement('div');
@@ -581,7 +592,7 @@ function makeRC(item, type) {
   nm.textContent = item.n;
 
   front.appendChild(hdr);
-  front.appendChild(img);
+  front.appendChild(imgWrap);
   front.appendChild(nm);
   flip.appendChild(back);
   flip.appendChild(front);
