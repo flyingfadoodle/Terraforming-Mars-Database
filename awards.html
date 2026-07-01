@@ -551,56 +551,53 @@ function makeRC(item, type) {
   const isMilestone = type === 'm';
   const topColor = isMilestone ? 'linear-gradient(180deg,#c8a840,#a07820)' : 'linear-gradient(180deg,#d4b840,#b09020)';
   const botColor = isMilestone ? 'linear-gradient(180deg,#4a7a20,#2a5000)' : 'linear-gradient(180deg,#c49010,#906000)';
+  const W = 140, H = 140;
 
   const wrap = document.createElement('div');
-  wrap.style.cssText = 'width:140px;height:140px;position:relative;perspective:800px;flex-shrink:0;';
+  wrap.style.cssText = `width:${W}px;height:${H}px;position:relative;perspective:800px;flex-shrink:0;`;
 
   const flip = document.createElement('div');
-  flip.style.cssText = 'width:140px;height:140px;position:relative;transform-style:preserve-3d;transition:transform 0.55s cubic-bezier(0.4,0,0.2,1);transform:rotateY(180deg);';
+  flip.style.cssText = `width:${W}px;height:${H}px;position:relative;transform-style:preserve-3d;transition:transform 0.55s cubic-bezier(0.4,0,0.2,1);transform:rotateY(180deg);`;
 
-  // Back face
+  // Back
   const back = document.createElement('div');
-  back.style.cssText = 'position:absolute;top:0;left:0;width:140px;height:140px;backface-visibility:hidden;border-radius:10px;transform:rotateY(180deg);background:linear-gradient(135deg,#1a1000,#3a2800);border:2px solid #8b6914;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:28px;color:rgba(139,105,20,0.4);box-sizing:border-box;';
+  back.style.cssText = `position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:10px;transform:rotateY(180deg);background:linear-gradient(135deg,#1a1000,#3a2800);border:2px solid #8b6914;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:28px;color:rgba(139,105,20,0.4);`;
   back.textContent = 'TM';
 
-  // Front face - flex column
+  // Front - use a canvas-like approach with absolute children
   const front = document.createElement('div');
-  front.style.cssText = 'position:absolute;top:0;left:0;width:140px;height:140px;backface-visibility:hidden;border-radius:10px;overflow:hidden;background:#e8e4d8;border:2px solid #aaa;display:flex;flex-direction:column;box-sizing:border-box;';
+  front.style.cssText = `position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:10px;border:2px solid #aaa;background:#e8e4d8;box-sizing:border-box;`;
 
-  // Header
+  // Header bar - absolute top
   const hdr = document.createElement('div');
-  hdr.style.cssText = `width:100%;height:18px;min-height:18px;max-height:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:8px;letter-spacing:.05em;color:#fff;background:${topColor};`;
+  hdr.style.cssText = `position:absolute;top:0;left:0;right:0;height:18px;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:8px;letter-spacing:.05em;color:#fff;background:${topColor};border-radius:8px 8px 0 0;`;
 
-  // Image
-  const imgWrap = document.createElement('div');
-  imgWrap.style.cssText = 'width:136px;height:99px;min-height:99px;max-height:99px;position:relative;overflow:hidden;flex-shrink:0;';
+  // Image - absolute middle
   const img = document.createElement('img');
   img.src = MABASE + item.i + '.png';
   img.alt = item.n;
-  img.style.cssText = 'width:136px;height:99px;object-fit:contain;display:block;';
-  imgWrap.appendChild(img);
+  img.style.cssText = 'position:absolute;top:18px;left:0;width:136px;height:103px;object-fit:contain;';
+
+  // Tag overlay
   if (item.tag) {
     const tagImg = document.createElement('img');
     tagImg.src = TAGBASE + item.tag;
-    tagImg.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.8));pointer-events:none;';
-    imgWrap.appendChild(tagImg);
+    tagImg.style.cssText = 'position:absolute;top:45px;left:50%;transform:translateX(-50%);width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.8));pointer-events:none;z-index:2;';
+    front.appendChild(tagImg);
   }
 
-  // Name bar
+  // Name bar - absolute bottom
   const nm = document.createElement('div');
-  nm.style.cssText = `width:100%;height:19px;min-height:19px;max-height:19px;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:${botColor};`;
+  nm.style.cssText = `position:absolute;bottom:0;left:0;right:0;height:19px;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:${botColor};border-radius:0 0 8px 8px;`;
   nm.textContent = item.n;
 
   front.appendChild(hdr);
-  front.appendChild(imgWrap);
+  front.appendChild(img);
   front.appendChild(nm);
   flip.appendChild(back);
   flip.appendChild(front);
   wrap.appendChild(flip);
-
-  // Add revealed class trigger
   wrap._flip = flip;
-
   return wrap;
 }
 
