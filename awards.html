@@ -481,17 +481,17 @@ function buildTile(item, type) {
   // Icon
   const iconDiv = document.createElement('div');
   iconDiv.className = 'ma-icon';
+  iconDiv.style.position = 'relative';
   const img = document.createElement('img');
   img.src = BASE + item.icon + '.png';
   img.alt = item.name;
+  img.style.cssText = 'width:140px;height:83px;object-fit:contain;display:block;';
   iconDiv.appendChild(img);
-  tile.appendChild(iconDiv);
-
-  // Name overlaid on icon bottom
   const nameDiv = document.createElement('div');
-  nameDiv.className = `ma-name ${type}`;
+  nameDiv.style.cssText = 'position:absolute;top:59px;left:0;right:0;height:18px;display:flex;align-items:center;justify-content:center;font-family:Prototype,serif;font-size:7.5px;letter-spacing:.06em;text-transform:uppercase;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.9);pointer-events:none;';
   nameDiv.textContent = item.name;
   iconDiv.appendChild(nameDiv);
+  tile.appendChild(iconDiv);
 
   // Description
   const descDiv = document.createElement('div');
